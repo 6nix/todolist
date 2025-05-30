@@ -415,15 +415,19 @@ function TodoList() {
         </form>
       </div>
 
+      {/* Sticky tab header - move this outside the scrollable area */}
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           gap: "20px",
-          marginTop: "3px",
+          marginTop: "10px",
           position: "sticky",
           top: 0,
           zIndex: 1000,
+          backgroundColor: "#b4c3cc",
+          padding: "10px 0",
+          borderBottom: "1px solid #ccc",
         }}
       >
         <div
@@ -456,13 +460,13 @@ function TodoList() {
         </div>
       </div>
 
+      {/* Scrollable todo list - leave this below */}
       <div
         className="todo-list-scroll"
         style={{
           maxHeight: "300px",
           overflowY: "auto",
-          marginTop: "10px",
-          borderTop: "1px solid #ccc",
+          marginTop: "0",
           paddingTop: "10px",
         }}
       >
@@ -472,7 +476,6 @@ function TodoList() {
             .map((todo, index) => (
               <li key={index} style={{ marginBottom: "20px" }}>
                 <TaskItem todo={todo} />
-
               </li>
             ))}
         </ul>
