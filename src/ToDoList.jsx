@@ -67,7 +67,9 @@ function TodoList() {
 
       <div className="input-area">
         <form onSubmit={handleAddTodo}>
-          <label htmlFor="taskTitle" className="font-weight: 800;">Task Subject:</label>
+          <label htmlFor="taskTitle" className="font-weight: 800;">
+            Task Subject:
+          </label>
           <br />
           <input
             id="taskTitle"
@@ -75,11 +77,14 @@ function TodoList() {
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
             placeholder="Enter task subject"
-            style={{ width: "400px", height: "40px" }}
           />
           <br />
 
-          <label htmlFor="taskDesc" className="font-weight: 800;" style={{ marginTop: "10px" }}>
+          <label
+            htmlFor="taskDesc"
+            className="font-weight: 800;"
+            style={{ marginTop: "10px" }}
+          >
             Task Description:
           </label>
           <br />
@@ -87,17 +92,34 @@ function TodoList() {
             id="taskDesc"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Enter task description"
-            style={{
-              width: "400px",
-              height: "80px",
-              resize: "none",
-              marginTop: "5px",
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleAddTodo(e);
+              }
             }}
+            placeholder="Enter task description"
           />
           <br />
 
-          <button type="submit" style={{ marginTop: "10px" }}>
+          <button
+            type="submit"
+            style={{
+              marginTop: "10px",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="blue"
+            >
+              <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
+            </svg>
             Add
           </button>
         </form>
@@ -116,27 +138,52 @@ function TodoList() {
         <ul style={{ listStyle: "none", paddingLeft: 0 }}>
           {todos.map((todo, index) => (
             <li key={index} style={{ marginBottom: "20px" }}>
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => toggleComplete(index)}
-              />
-              <strong style={{ marginLeft: "8px" }}>{todo.text}</strong>
-              <br />
-              <em>{todo.description}</em>
-              <br />
-              <small>Added: {todo.date}</small>
-              <br />
-              {todo.completed && (
-                <small style={{ color: "green" }}>✅ Completed</small>
-              )}
-              <br />
-              <button
-                onClick={() => handleDelete(index)}
-                style={{ marginTop: "5px" }}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                }}
               >
-                Delete
-              </button>
+                <div>
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() => toggleComplete(index)}
+                    style={{ transform: "scale(1.4)", marginRight: "8px" }}
+                  />
+                  <strong style={{ marginLeft: "8px" }}>{todo.text}</strong>
+                  <br />
+                  <em>{todo.description}</em>
+                  <br />
+                  <small>Added: {todo.date}</small>
+                  <br />
+                  {todo.completed && (
+                    <small style={{ color: "green" }}>✅ Completed</small>
+                  )}
+                </div>
+
+                <button
+                  onClick={() => handleDelete(index)}
+                  style={{
+                    marginLeft: "10px",
+                    color: "red",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    background: "transparent",
+                    border: "2px solid red",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                    padding: "4px 8px",
+                    height: "fit-content",
+                  }}
+                >
+                  <span style={{ fontSize: "16px" }}>❌</span>
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>
