@@ -63,16 +63,16 @@ button {
   padding: 8px 12px;
   margin-top: 10px;
   font-size: 16px;
-  border-radius: 8px; /* Rounded corners */
+  border-radius: 8px; 
   border: none;
   cursor: pointer;
-  background-color: #007bff; /* Optional: blue background */
-  color: white; /* Optional: white text */
+  background-color: #007bff; 
+  color: white; 
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3; /* Optional: darker on hover */
+  background-color: #0056b3; 
 }
 
 .checkbox {
@@ -87,18 +87,16 @@ button:hover {
 }
 
 textarea {
-  resize: none; /* Prevents user from resizing */
-  padding: 8px;
+  resize: none; 
   font-family: sans-serif;
-  height: 80px; /* Fixed height */
-  width: 100%; /* Responsive width */
+  height: 80px; 
+  width: 100%; 
   box-sizing: border-box;
   font-size: 16px;
   border-radius: 4px;
   border: 1px solid #58717d;
 }
 
-/* Responsive Styles */
 @media (max-width: 600px) {
   .App {
     padding: 20px;

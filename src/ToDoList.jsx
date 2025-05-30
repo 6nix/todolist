@@ -5,7 +5,6 @@ function TodoList() {
   const [newTodo, setNewTodo] = useState("");
   const [description, setDescription] = useState("");
 
-  // Load todos from localStorage on first render
   useEffect(() => {
     try {
       const savedTodos = localStorage.getItem("todos");
@@ -18,7 +17,6 @@ function TodoList() {
     }
   }, []);
 
-  // Save todos to localStorage when todos change
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
